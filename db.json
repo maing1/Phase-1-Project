@@ -1,0 +1,47 @@
+{
+  "cats": [
+    {
+    "id": 1, 
+    "name": "Milo",
+    "image": "https://cdn2.thecatapi.com/images/QAWwhRFCG.jpg",
+    "breed": "Siamese", 
+    "age": 2 
+    },
+    { 
+      "id": 2, 
+      "name": "Luna", 
+      "breed": "Persian", 
+      "age": 3 
+    },
+    { 
+      "id": 3, 
+      "name": "Oliver", 
+      "breed": "Maine Coon", 
+      "age": 1 
+    },
+    { 
+      "id": 4, 
+      "name": "Charlie", 
+      "breed": "Sphynx", 
+      "age": 4 
+    },
+    { 
+      "id": 5, 
+      "name": "Bella", 
+      "breed": "Bengal", 
+      "age": 2 
+    },
+    { 
+      "id": 6, 
+      "name": "Princess", 
+      "breed": "Ragdoll", 
+      "age": 12
+    },
+    { 
+      "id": 7, 
+      "name":"Ginger", 
+      "breed": "American Shorthair", 
+      "age": 5
+    }
+  ]
+}
