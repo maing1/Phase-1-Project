@@ -1,65 +1,93 @@
+
 document.addEventListener('DOMContentLoaded', () => {
   const catList = document.getElementById('cat-list');
   const searchInput = document.getElementById('search');
   const searchBtn = document.getElementById('searchBtn');
   const adoptionMessage = document.getElementById('adoption-message');
+  const catFact = document.getElementById('cat-fact');
+  const newFactBtn = document.getElementById('new-fact-btn');
 
+  // Fetch cats from local API
   const fetchCats = (breed = '') => {
     fetch('http://localhost:3000/cats')
-      .then(response => response.json()) // Convert response to JSON
+      .then(response => response.json())
       .then(cats => {
-        // Filter based on search
         if (breed) {
           cats = cats.filter(cat => cat.breed.toLowerCase().includes(breed.toLowerCase()));
         }
-  
-        // Display cats
         displayCats(cats);
-      })
+      });
   };
-  
 
   // Display list of cats
   const displayCats = (cats) => {
-    catList.innerHTML = ''; // Clear previous list
+    catList.innerHTML = '';
     cats.forEach(cat => {
       const catCard = document.createElement('div');
       catCard.classList.add('cat-card');
-
       catCard.innerHTML = `
         <h3>${cat.name}</h3>
-        <img src="" alt="">
+        <img id="kitty-image" src="${cat.image}" alt="kitty" />
         <p>Breed: ${cat.breed}</p>
         <p>Age: ${cat.age} years old</p>
-        <button class="adoptBtn" data-id="${cat.id}">Adopt</button>
+        <button class="adoptBtn" data-id="${cat.id}" ${cat.isAdopted ? 'disabled' : ''}>
+          ${cat.isAdopted ? 'Adopted' : 'Adopt'}
+        </button>
       `;
-
       catList.appendChild(catCard);
     });
 
-    // Add event listener to adopt buttons (event listener 1: click)
     document.querySelectorAll('.adoptBtn').forEach(btn => {
       btn.addEventListener('click', adoptCat);
     });
   };
 
-  // Handle adoption (adopt button click)
+  // Handle adoption
   const adoptCat = (e) => {
     const catId = e.target.getAttribute('data-id');
-    adoptionMessage.innerHTML = `Cat with ID ${catId} has been adopted!`;
+    fetch(`http://localhost:3000/cats/${catId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        isAdopted: true
+      })
+    })
+    .then(response => response.json())
+    .then(updatedCat => {
+      adoptionMessage.innerHTML = `Kitty ${updatedCat.name} has been adopted!`;
+      e.target.innerHTML = 'Adopted';
+      e.target.disabled = true;
+    })
+    
   };
 
-  // Search event (event listener 2: search button click)
+  // Fetch random cat fact from external API
+  const fetchCatFact = () => {
+    fetch('https://meowfacts.herokuapp.com/')
+      .then(response => response.json())
+      .then(data => {
+        catFact.innerText = data.data[0]; // Show the first cat fact in the response
+      })
+    
+  };
+
+  // Search event
   searchBtn.addEventListener('click', () => {
     const breed = searchInput.value;
     fetchCats(breed);
   });
 
-  // Event listener for search input (event listener 3: input change)
+  // Event listener for search input
   searchInput.addEventListener('input', () => {
     if (!searchInput.value) fetchCats(); // If search input is cleared, fetch all cats
   });
 
-  // Initial fetch of cats on page load
+  // Fetch a new cat fact on button click
+  newFactBtn.addEventListener('click', fetchCatFact);
+
+  // Initial fetch of cats and random cat fact on page load
   fetchCats();
+  fetchCatFact();
 });

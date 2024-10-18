@@ -1,47 +1,59 @@
 {
   "cats": [
     {
-    "id": 1, 
-    "name": "Milo",
-    "image": "https://cdn2.thecatapi.com/images/QAWwhRFCG.jpg",
-    "breed": "Siamese", 
-    "age": 2 
+      "id": "1",
+      "name": "Milo",
+      "image": "https://cdn2.thecatapi.com/images/QAWwhRFCG.jpg",
+      "breed": "Siamese",
+      "age": 0.5,
+      "isAdopted": false
     },
-    { 
-      "id": 2, 
-      "name": "Luna", 
-      "breed": "Persian", 
-      "age": 3 
+    {
+      "id": "2",
+      "name": "Luna",
+      "image": "https://cdn2.thecatapi.com/images/ohy1YBZtD.png",
+      "breed": "Flame point Siamese",
+      "age": 3,
+      "isAdopted": true
     },
-    { 
-      "id": 3, 
-      "name": "Oliver", 
-      "breed": "Maine Coon", 
-      "age": 1 
+    {
+      "id": "3",
+      "name": "Oliver",
+      "image": "https://cdn2.thecatapi.com/images/il.jpg",
+      "breed": "Maine Coon",
+      "age": 1,
+      "isAdopted": true
     },
-    { 
-      "id": 4, 
-      "name": "Charlie", 
-      "breed": "Sphynx", 
-      "age": 4 
+    {
+      "id": "4",
+      "name": "Charlie",
+      "image": "https://cdn2.thecatapi.com/images/67v.jpg",
+      "breed": "Sphynx",
+      "age": 4,
+      "isAdopted": true
     },
-    { 
-      "id": 5, 
-      "name": "Bella", 
-      "breed": "Bengal", 
-      "age": 2 
+    {
+      "id": "5",
+      "name": "Bella",
+      "image": "https://cdn2.thecatapi.com/images/ebh.jpg",
+      "breed": "Bengal",
+      "age": 2
     },
-    { 
-      "id": 6, 
-      "name": "Princess", 
-      "breed": "Ragdoll", 
-      "age": 12
+    {
+      "id": "6",
+      "name": "Princess",
+      "image": "https://cdn2.thecatapi.com/images/MTY3NTkxNw.jpg",
+      "breed": "Ragdoll",
+      "age": 12,
+      "isAdopted": false
     },
-    { 
-      "id": 7, 
-      "name":"Ginger", 
-      "breed": "American Shorthair", 
-      "age": 5
+    {
+      "id": "7",
+      "name": "Ginger",
+      "image": "https://cdn2.thecatapi.com/images/7iq.jpg",
+      "breed": "American Shorthair",
+      "age": 5,
+      "isAdopted": false
     }
   ]
 }
